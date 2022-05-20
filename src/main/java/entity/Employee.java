@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Employee {
 	
-	private String empName;
+	private  String empName;
 	private Integer empAge;
 	private String empSex;
 	private String empPos;

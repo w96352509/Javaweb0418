@@ -9,7 +9,7 @@
 <title>Buy</title>
 </head>
 <body style="padding: 20px">
-	<form class="pure-form" action="/JavaWeb-20220418/servlet/cart/buy">
+	<form class="pure-form" method="post" action="/JavaWeb-20220418/servlet/cart/buy">
 	  <fieldset>
 	   <legend>BUY</legend>
 	   <label for=name>品名:</label>
@@ -24,7 +24,7 @@
          buy
        </button>
        <button type="button" 
-               onclick="location.href='/JavaWeb-20220418/servlet/cart/view/';"
+               onclick="location.href='/JavaWeb-20220418/servlet/cart/view';"
                class="pure-button pure-button-primary">
         Cart
        </button>	  

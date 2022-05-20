@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/servlet/cart/clear")
-public class ClearCartServlet extends HttpServlet  {
+public class ClearCartServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		 // 重導 "/jsp/cart/buy.jsp"
-		 RequestDispatcher rd  = req.getRequestDispatcher("/jsp/cart/buy.jsp");
-		 rd.forward(req, resp);
+		// 重導到 "/jsp/cart/buy.jsp"
+		RequestDispatcher rd = req.getRequestDispatcher("/jsp/cart/buy.jsp");
+		rd.forward(req, resp);
 	}
+	
 }

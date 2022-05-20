@@ -2,6 +2,7 @@ package servlet.cart;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,5 +15,10 @@ public class BuyServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		 
+		
+		 // 重導 "servlet/cart/view"
+		 RequestDispatcher rd  = req.getRequestDispatcher("/servlet/cart/view");
+		 rd.forward(req, resp);
 	}
 }

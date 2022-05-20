@@ -27,7 +27,8 @@
                onclick="location.href='/JavaWeb-20220418/servlet/cart/view';"
                class="pure-button pure-button-primary">
         Cart
-       </button>	  
+       </button>	
+       ${nosession}   
 	  </fieldset>
 	</form>  
   

@@ -16,6 +16,9 @@
 			<p />
 			<input type="password" placeholder="請輸入使用者密碼" name="password" />
 			<p />
+			<input type="text" placeholder="請輸入驗證碼" name="usercode" style="width: 130px" />
+			<img src="/JavaWeb-20220418/captcha/authcodeimage" valign="middle" />
+			<p/>
 			<button type="submit" class="pure-button pure-button-primary">
 				登入
 			</button>

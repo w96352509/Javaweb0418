@@ -33,7 +33,7 @@ public class GetUserRecord extends BaseServlet {
 				resp.getWriter().print("No record !");
 			}
 		} catch (Exception e) {
-			resp.getWriter().print(e);
+			resp.getWriter().print(e );
 		}
 	}
 	

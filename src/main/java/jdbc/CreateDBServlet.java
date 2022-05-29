@@ -31,12 +31,13 @@ public class CreateDBServlet extends HttpServlet {
 			Class.forName("org.sqlite.JDBC");
 			// sqlite(無 username/password)
 			conn = DriverManager.getConnection(db_url);
-			resp.getWriter().print("SQLite 建立");
+			resp.getWriter().print("SQLite create success");
 		} catch (Exception e) {
 			resp.getWriter().print(e.getMessage());
 		} finally {
 			if (conn != null) {
 				try {
+					// 關閉資料庫連線
 					conn.close();
 				} catch (Exception e2) {
 					resp.getWriter().print(e2.getMessage());

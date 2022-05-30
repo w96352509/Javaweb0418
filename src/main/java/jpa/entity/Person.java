@@ -7,10 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Person")
+@NamedQueries({   //{}多筆
+	@NamedQuery(name = "Person.findAll"             , query = "select p from Person p"),
+	@NamedQuery(name = "Person.findByName"          , query = "select p from Person p where p.name = :name"),
+	@NamedQuery(name = "Person.findByAgeBetween"    , query = "select p from Person p where p.age between :min and :max")	
+})                                 
 public class Person implements Serializable {
 	
 	@Id

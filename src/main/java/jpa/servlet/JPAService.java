@@ -68,11 +68,11 @@ public class JPAService {
 	
 	public List<Person> queryPersonByAge(Integer age){
 		// :... JPQL 語法
-		String sql = "select p from Person p where p.age= :age";
+		String sql = "select p from Person p where p.age > :age";
 		Query query = em.createQuery(sql);
 		query.setParameter("age", age); // 對應 :age
 		List<Person> list = query.getResultList();
-	    return list;
+		return list;
 	}
 	
 	

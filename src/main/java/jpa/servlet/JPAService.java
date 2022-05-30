@@ -7,8 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
+
 
 import jpa.entity.Person;
 
@@ -29,6 +28,8 @@ public class JPAService {
 	public EntityManager getEntityManager() {
 		return em;
 	}
+	
+	
 	
 	public void addPerson(Person person) {
 		//防止衝線
@@ -53,6 +54,7 @@ public class JPAService {
 	}
 	
 	// 全搜(1)
+	@SuppressWarnings("unchecked")
 	public List<Person> queryAll(){
 		Query query = em.createQuery("select p from Person p");
 		List<Person> list = query.getResultList();
@@ -60,6 +62,7 @@ public class JPAService {
 	}
 	
 	// 全搜(2)
+	@SuppressWarnings("unchecked")
 	public List<Person> queryAll2(){
 		Query query = em.createQuery("from Person p" , Person.class);
 		List<Person> list = query.getResultList();
@@ -71,9 +74,29 @@ public class JPAService {
 		String sql = "select p from Person p where p.age > :age";
 		Query query = em.createQuery(sql);
 		query.setParameter("age", age); // 對應 :age
+		@SuppressWarnings("unchecked")
 		List<Person> list = query.getResultList();
 		return list;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Person> findAll(){
+		return em.createNamedQuery("Person.findAll").getResultList();
+	}
+ 	
+	@SuppressWarnings("unchecked")
+	public List<Person> findByName(String name){
+		return em.createNamedQuery("Person.findByName")
+				 .setParameter("name", name)
+				 .getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Person> findByAgeBetween(Integer min , Integer max){
+		return em.createNamedQuery("Person.findByAgeBetween")
+				 .setParameter("min", min)
+				 .setParameter("max", max)
+				 .getResultList();
+	}
 	
 }

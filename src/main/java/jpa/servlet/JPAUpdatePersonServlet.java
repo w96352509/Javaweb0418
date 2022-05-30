@@ -1,17 +1,23 @@
 package jpa.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Random;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.github.javafaker.Faker;
+
+import jpa.entity.Person;
 
 @SuppressWarnings("serial")
-@WebServlet("/jpa/person/query")
-public class JPAQueryPersonServlet extends HttpServlet {
+@WebServlet("/jpa/personupdate")
+public class JPAUpdatePersonServlet extends HttpServlet {
 
 	private JPAService jpaService;
 	
@@ -24,22 +30,25 @@ public class JPAQueryPersonServlet extends HttpServlet {
 	}
 
 	private void doHandel(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      resp.setContentType("text/html;charset=utf-8");
-      PrintWriter out = resp.getWriter();
-	  out.print(jpaService.getPersonById(1)+"<p/>");
-	  out.print(jpaService.queryPersonByAge(20)+"<p/>");
-	  out.print(jpaService.queryAll2()+"<p/>");
-	  
-	  out.print(jpaService.findAll()+"<p/>");
-	  // % 字元 字元在尾巴
-	  // 字元 % 字元在字首
-	  // %字元% 包含
-	  out.print(jpaService.findByName("%er%")+"<p/>");
-	  out.print(jpaService.findByAgeBetween(10,30)+"<p/>");
-	  
-	  
+	 
+		EntityManager em = jpaService.getEntityManager();
+	    // 取得固定 ID 資料
+		Person person    = em.find(Person.class, 1);
+	    person.setAge(100);
+	    
+	    resp.getWriter().print(person);
+	    // 開始進行資料交易
+	    EntityTransaction etx = em.getTransaction();
+	    // 交易開始
+	    etx.begin();
+	    // 注入資料
+	    // merge(讓無關物件強制與資料庫有關係) 直到 close
+	    em.persist(person); 
+	    // 交易提交
+	    etx.commit();
+	    // close 以前操作可以被管理
+	    em.close();
 	}
-		
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

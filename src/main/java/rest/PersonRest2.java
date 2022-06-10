@@ -69,6 +69,8 @@ public class PersonRest2 extends HttpServlet {
 		case "GET":
             person = jpaService.getPersonById(id);
             out.println(person);
+            out.println("ALL Data :");
+            out.println(jpaService.findAll());
 			break;
 		case "POST":
             person = new Person();

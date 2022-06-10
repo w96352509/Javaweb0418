@@ -8,7 +8,7 @@
 	<persistence-unit name="demo" transaction-type="RESOURCE_LOCAL">
         <!-- 物件位置 -->
         <class>jpa.entity.Person</class>
-
+        <class>guestbook.entity.Guestbook</class>
         <properties>
             <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>

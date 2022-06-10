@@ -19,9 +19,9 @@
 		var name = document.getElementById("name").value;
 		var age = document.getElementById("age").value;
 		// 組合參數
-		var args = "id=" + id + "&name=" + name +"&age" +age ;	
+		var args = "id=" + id + "&name=" + name + "&age=" + age;
 		// 開啟連線
-		xhttp.open("GET", "/JavaWeb-20220418/rest/person?" + args, true); // true 非同步, false 同步
+		xhttp.open("GET", "/JavaWeb-20220418/rest2/person?" + args, true); // true 非同步, false 同步
 		// 傳送
 		xhttp.send();
 	}
@@ -36,9 +36,9 @@
 		var name = document.getElementById("name").value;
 		var age = document.getElementById("age").value;
 		// 組合參數
-		var args = "id=" + id + "&name=" + name +"&age" +age ;
+		var args = "id=" + id + "&name=" + name + "&age=" + age;
 		// 開啟連線
-		xhttp.open("POST", "/JavaWeb-20220418/rest/person", true); // true 非同步, false 同步
+		xhttp.open("POST", "/JavaWeb-20220418/rest2/person", true); // true 非同步, false 同步
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		// 傳送
 		xhttp.send(args);
@@ -54,11 +54,11 @@
 		var name = document.getElementById("name").value;
 		var age = document.getElementById("age").value;
 		// 組合參數
-		var args = "id=" + id + "&name=" + name +"&age" +age ;
+		var args = "id=" + id + "&name=" + name + "&age=" + age;
 		// 開啟連線
-		xhttp.open("PUT", "/JavaWeb-20220418/rest/person", true); // true 非同步, false 同步
-		// 傳送
+		xhttp.open("PUT", "/JavaWeb-20220418/rest2/person", true); // true 非同步, false 同步
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		// 傳送
 		xhttp.send(args);
 	}
 	function doDelete() {
@@ -72,11 +72,11 @@
 		var name = document.getElementById("name").value;
 		var age = document.getElementById("age").value;
 		// 組合參數
-		var args = "id=" + id + "&name=" + name +"&age" +age ;
+		var args = "id=" + id + "&name=" + name + "&age=" + age;
 		// 開啟連線
-		xhttp.open("DELETE", "/JavaWeb-20220418/rest/person", true); // true 非同步, false 同步
-		// 傳送
+		xhttp.open("DELETE", "/JavaWeb-20220418/rest2/person", true); // true 非同步, false 同步
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		// 傳送
 		xhttp.send(args);
 	}
 </script>
